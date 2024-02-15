@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {Like, MediaItem, MediaItemWithOwner, User} from '../types/DBTypes';
+
 import {fetchData} from '../lib/functions';
 import {Credentials} from '../types/LocalTypes';
 import {
@@ -160,6 +161,7 @@ const useFile = () => {
   return {postFile};
 };
 
+
 const useLike = () => {
   const postLike = async (media_id: number, token: string) => {
     // Send a POST request to /likes with object { media_id } and the token in the Authorization header.
@@ -217,3 +219,5 @@ const useLike = () => {
 };
 
 export {useMedia, useUser, useAuthentication, useFile, useLike};
+
+
