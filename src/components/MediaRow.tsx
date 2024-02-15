@@ -1,7 +1,11 @@
-import {MediaItem} from "../types/DBTypes";
+import {Link} from 'react-router-dom';
+import {MediaItemWithOwner} from '../types/DBTypes';
+import {useUserContext} from '../hooks/ContextHooks';
 
-const MediaRow = (props: {mediaItem: MediaItem}) => {
-  const item = props.mediaItem;
+const MediaRow = (props: {item: MediaItemWithOwner}) => {
+  const {item} = props;
+  const {user} = useUserContext();
+  console.log('user', user);
   return (
     <tr className="media-row">
       <td>
@@ -12,6 +16,33 @@ const MediaRow = (props: {mediaItem: MediaItem}) => {
       <td>{new Date(item.created_at).toLocaleString('fi-FI')}</td>
       <td>{item.filesize}</td>
       <td>{item.media_type}</td>
+      <td>{item.username}</td>
+      <td>
+        <Link
+          className="bg-slate-700 p-2 hover:bg-slate-950"
+          to="/single"
+          state={item}
+        >
+          View
+        </Link>
+        {user &&
+          (user.user_id === item.user_id || user.level_name === 'Admin') && (
+            <>
+              <button
+                className="bg-slate-700 p-2 hover:bg-slate-950"
+                onClick={() => console.log('modify', item)}
+              >
+                Modify
+              </button>
+              <button
+                className="bg-slate-700 p-2 hover:bg-slate-950"
+                onClick={() => console.log('delete', item)}
+              >
+                Delete
+              </button>
+            </>
+          )}
+      </td>
     </tr>
   );
 };
