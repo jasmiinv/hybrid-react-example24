@@ -1,6 +1,6 @@
 # Hybrid Apps - React example
 
-Open [this link in browser](https://users.metropolia.fi/~mattpe/react-routing/) to see the app in action.
+Open [this link in browser](https://users.metropolia.fi/~jasmiinv/react-routing/) to see the app in action.
 
 ---
 

@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {MediaItemWithOwner} from '../types/DBTypes';
-import {useUserContext} from '../hooks/ContextHooks';
+import {useUserContext} from '../hooks/contextHooks';
 
 const MediaRow = (props: {item: MediaItemWithOwner}) => {
   const {item} = props;
